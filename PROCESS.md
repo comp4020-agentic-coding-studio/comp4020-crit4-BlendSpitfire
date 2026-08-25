@@ -17,18 +17,23 @@ cover every deliverable.
 
 ## What I built
 
-一个用键盘触发的虚拟架子鼓
+A virtual drum kit you can play by tapping the pads or pressing the keyboard.
 
 ## The moments that mattered
 
-Three or four for an assignment; fewer is fine for a weekly prototype. Keep the
-list short so each moment has room to do all four jobs:
-
-1. **what happened** --- 页面里面的按钮的位置始终不满意
-2. **what you did instead of the obvious thing** --- 放弃用语言调整了，让ai给了一个可以实时拖动布局的小网站，我手动排序好后让ai读取元素的位置
-3. **how you knew it was right** --- 它很有用，明显减少了沟通和时间成本
-4. **the citation** --- a commit or commit range, a `CLAUDE.md` change, a check
-   that went from red to green, a prompt paired with the commit it produced
+1. **what happened** --- I was never satisfied with where the pads sat on the
+   page; describing a position in words and waiting for a re-render was slow
+   and imprecise.
+2. **what you did instead of the obvious thing** --- Instead of continuing to
+   adjust the layout through language, I had the AI build a small local tool:
+   a page where I could drag each pad into place live. I arranged everything
+   by hand, then had the AI read the resulting coordinates straight off it.
+3. **how you knew it was right** --- It worked well: it cut the
+   back-and-forth and the time spent on layout tweaks noticeably compared to
+   describing positions in text.
+4. **the citation** ---
+   [`bbc5ead`](https://github.com/comp4020-agentic-coding-studio/comp4020-crit4-BlendSpitfire/commit/bbc5ead3035eddee26082c8fcf0e70fba13662d8),
+   using the layout editor at `tools/kit-editor/`.
 
 Jobs 2 and 3 are the ones the repo can't tell a reader on its own, so they're
 where the marks are. The strongest moments are the ones where a correction
