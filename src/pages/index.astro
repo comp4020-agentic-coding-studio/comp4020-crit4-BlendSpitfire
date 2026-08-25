@@ -14,27 +14,108 @@ import Layout from "../layouts/Layout.astro";
   <main>
     <h1>Tap a Beat</h1>
     <p data-testid="play-prompt" class="prompt">
-      Tap a pad — or press <kbd>A</kbd> <kbd>S</kbd> <kbd>D</kbd> <kbd>F</kbd>
-      <kbd>G</kbd> <kbd>H</kbd> — to play.
+      Tap a piece of the kit — or press <kbd>Q</kbd> <kbd>W</kbd> <kbd>E</kbd>
+      <kbd>R</kbd> <kbd>A</kbd> <kbd>S</kbd> <kbd>D</kbd> <kbd>Z</kbd>
+      <kbd>X</kbd> — to play.
     </p>
-    <div class="pads" role="group" aria-label="Drum pads">
-      <button type="button" class="pad" data-drum="kick" data-key="a">
-        <span class="label">Kick</span><span class="key">A</span>
+    <div class="kit" role="group" aria-label="Drum kit, viewed from above">
+      <button
+        type="button"
+        class="hit piece crash"
+        data-drum="crash"
+        data-key="q"
+        aria-label="Crash cymbal (Q)"
+      >
+        <span class="icon ring"></span>
+        <span class="label">Crash <kbd>Q</kbd></span>
       </button>
-      <button type="button" class="pad" data-drum="snare" data-key="s">
-        <span class="label">Snare</span><span class="key">S</span>
+
+      <button
+        type="button"
+        class="hit piece hi-tom"
+        data-drum="hi-tom"
+        data-key="w"
+        aria-label="Hi tom (W)"
+      >
+        <span class="icon petal petal-left"></span>
+        <span class="label">Hi tom <kbd>W</kbd></span>
       </button>
-      <button type="button" class="pad" data-drum="hihat" data-key="d">
-        <span class="label">Hi-hat</span><span class="key">D</span>
+
+      <button
+        type="button"
+        class="hit piece mid-tom"
+        data-drum="mid-tom"
+        data-key="e"
+        aria-label="Mid tom (E)"
+      >
+        <span class="icon petal petal-right"></span>
+        <span class="label">Mid tom <kbd>E</kbd></span>
       </button>
-      <button type="button" class="pad" data-drum="tom" data-key="f">
-        <span class="label">Tom</span><span class="key">F</span>
+
+      <button
+        type="button"
+        class="hit piece ride"
+        data-drum="ride"
+        data-key="r"
+        aria-label="Ride cymbal (R)"
+      >
+        <span class="icon ring"></span>
+        <span class="label">Ride <kbd>R</kbd></span>
       </button>
-      <button type="button" class="pad" data-drum="clap" data-key="g">
-        <span class="label">Clap</span><span class="key">G</span>
+
+      <button
+        type="button"
+        class="hit piece open-hihat"
+        data-drum="hihat-open"
+        data-key="a"
+        aria-label="Hi-hat, open (A)"
+      >
+        <span class="icon disc-cymbal"></span>
+        <span class="label">Open hi-hat <kbd>A</kbd></span>
       </button>
-      <button type="button" class="pad" data-drum="crash" data-key="h">
-        <span class="label">Crash</span><span class="key">H</span>
+
+      <button
+        type="button"
+        class="hit piece closed-hihat"
+        data-drum="hihat-closed"
+        data-key="s"
+        aria-label="Hi-hat, closed (S)"
+      >
+        <span class="icon notch"></span>
+        <span class="label">Closed hi-hat <kbd>S</kbd></span>
+      </button>
+
+      <button
+        type="button"
+        class="hit piece low-tom"
+        data-drum="low-tom"
+        data-key="d"
+        aria-label="Low tom (D)"
+      >
+        <span class="icon disc-drum"></span>
+        <span class="label">Low tom <kbd>D</kbd></span>
+      </button>
+
+      <button
+        type="button"
+        class="hit piece snare"
+        data-drum="snare"
+        data-key="z"
+        aria-label="Snare drum (Z)"
+      >
+        <span class="icon disc-drum disc-drum-large"></span>
+        <span class="label">Snare <kbd>Z</kbd></span>
+      </button>
+
+      <button
+        type="button"
+        class="hit piece kick"
+        data-drum="kick"
+        data-key="x"
+        aria-label="Kick drum (X)"
+      >
+        <span class="icon bar"></span>
+        <span class="label">Kick <kbd>X</kbd></span>
       </button>
     </div>
   </main>

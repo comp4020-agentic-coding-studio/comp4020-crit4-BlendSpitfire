@@ -36,55 +36,269 @@ kbd {
   font-size: 0.9em;
 }
 
-.pads {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
-  margin-top: 2rem;
+/* A flat, schematic top-down drum kit: every cymbal shares one color and
+   every drum shares another, positioned the way they'd sit around a
+   seated drummer, no photos or shading. */
+:root {
+  --kit-bg: #101014;
+  --kit-cymbal: #f4b400;
+  --kit-drum: #3ea6ff;
 }
 
-.pad {
+.kit {
+  position: relative;
+  width: min(100%, 42rem);
+  aspect-ratio: 16 / 11;
+  margin: 2rem auto 0;
+}
+
+.piece {
+  position: absolute;
+  transform: translate(-50%, -50%);
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 0.35rem;
-  aspect-ratio: 1;
+  gap: 0.4rem;
+}
+
+button.piece {
   border: none;
-  border-radius: 1rem;
-  background: linear-gradient(160deg, #3a3d55, #23253a);
-  color: #f4f4f7;
-  font: inherit;
-  font-size: 1.1rem;
+  background: none;
+  padding: 0;
   cursor: pointer;
-  transition:
-    transform 80ms ease-out,
-    background 80ms ease-out;
   touch-action: manipulation;
   -webkit-user-select: none;
   user-select: none;
 }
 
-.pad .key {
-  font-size: 0.75rem;
+.label {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.7rem;
   color: #9fa2ba;
+  white-space: nowrap;
+  pointer-events: none;
 }
 
-.pad:hover {
-  background: linear-gradient(160deg, #454869, #2a2c44);
+.icon {
+  transition: transform 80ms ease-out;
 }
 
-.pad.active {
-  transform: scale(0.94);
-  background: linear-gradient(160deg, #7fb2ff, #4a6fd9);
+/* Cymbals: a ring, like looking straight down at the rim with the bell
+   punched out of the middle. */
+.ring {
+  width: 6.6rem;
+  height: 6.6rem;
+  border-radius: 50%;
+  background: var(--kit-cymbal);
+  position: relative;
 }
 
-.pad.active .key {
+.ring::after {
+  content: "";
+  position: absolute;
+  inset: 32%;
+  border-radius: 50%;
+  background: var(--kit-bg);
+}
+
+/* Toms: a rounded petal, distinct from the plain circles used for the
+   drums that don't get their own stand. */
+.petal {
+  width: 4.6rem;
+  height: 4.6rem;
+  background: var(--kit-drum);
+  border-radius: 0% 55% 55% 55%;
+}
+
+.petal-left {
+  transform: rotate(20deg);
+}
+
+.petal-right {
+  transform: rotate(-110deg);
+}
+
+.disc-drum {
+  width: 6rem;
+  height: 6rem;
+  border-radius: 50%;
+  background: var(--kit-drum);
+}
+
+.disc-cymbal {
+  width: 3.6rem;
+  height: 3.6rem;
+  border-radius: 50%;
+  background: var(--kit-cymbal);
+}
+
+.disc-drum-large {
+  width: 5.6rem;
+  height: 5.6rem;
+}
+
+/* Closed hi-hat: a disc with a wedge missing, like the open rim gap
+   between two pressed-together cymbals seen from above. */
+.notch {
+  width: 4.4rem;
+  height: 4.4rem;
+  border-radius: 50%;
+  background: conic-gradient(transparent 0deg 42deg, var(--kit-cymbal) 42deg 360deg);
+}
+
+.bar {
+  width: 1.6rem;
+  height: 3.4rem;
+  border-radius: 0.5rem;
+  background: var(--kit-drum);
+}
+
+.hit:hover .icon {
+  filter: brightness(1.15);
+}
+
+.hit.active .icon {
+  transform: scale(0.92);
+}
+
+.hit.active .label {
   color: #eef3ff;
 }
 
+/* Kit layout: cymbals in the top corners, toms across the middle, the
+   hi-hat's two positions stacked on the left, low tom on the right,
+   snare and kick along the front. */
+.piece.crash {
+  left: 14%;
+  top: 20%;
+}
+
+.piece.ride {
+  left: 86%;
+  top: 20%;
+}
+
+.piece.hi-tom {
+  left: 37%;
+  top: 32%;
+}
+
+.piece.mid-tom {
+  left: 63%;
+  top: 32%;
+}
+
+.piece.open-hihat {
+  left: 10%;
+  top: 46%;
+}
+
+.piece.closed-hihat {
+  left: 10%;
+  top: 66%;
+}
+
+.piece.low-tom {
+  left: 90%;
+  top: 58%;
+}
+
+.piece.snare {
+  left: 32%;
+  top: 82%;
+}
+
+.piece.kick {
+  left: 68%;
+  top: 82%;
+}
+
 @media (max-width: 30rem) {
-  .pads {
-    grid-template-columns: repeat(2, 1fr);
+  .kit {
+    aspect-ratio: 1 / 1.3;
+  }
+
+  .ring,
+  .disc-drum {
+    width: 4.2rem;
+    height: 4.2rem;
+  }
+
+  .petal {
+    width: 3.2rem;
+    height: 3.2rem;
+  }
+
+  .disc-cymbal {
+    width: 3rem;
+    height: 3rem;
+  }
+
+  .disc-drum-large {
+    width: 4rem;
+    height: 4rem;
+  }
+
+  .notch {
+    width: 3.6rem;
+    height: 3.6rem;
+  }
+
+  .bar {
+    width: 1.3rem;
+    height: 2.8rem;
+  }
+
+  .label {
+    font-size: 0.6rem;
+  }
+
+  /* Pull every piece in from the frame's edges so a wide ring or petal
+     never clips, and give the stacked hi-hat states more room apart. */
+  .piece.crash {
+    left: 14%;
+    top: 12%;
+  }
+
+  .piece.ride {
+    left: 86%;
+    top: 12%;
+  }
+
+  .piece.hi-tom {
+    left: 36%;
+    top: 33%;
+  }
+
+  .piece.mid-tom {
+    left: 64%;
+    top: 33%;
+  }
+
+  .piece.open-hihat {
+    left: 16%;
+    top: 46%;
+  }
+
+  .piece.closed-hihat {
+    left: 16%;
+    top: 66%;
+  }
+
+  .piece.low-tom {
+    left: 86%;
+    top: 58%;
+  }
+
+  .piece.snare {
+    left: 32%;
+    top: 84%;
+  }
+
+  .piece.kick {
+    left: 68%;
+    top: 84%;
   }
 }
