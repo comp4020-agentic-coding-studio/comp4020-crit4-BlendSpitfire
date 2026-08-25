@@ -3,8 +3,8 @@ import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout
-  title="COMP4020 prototype"
-  description="Replace this with one sentence saying what this page is. A search result and a link preview both show it."
+  title="Tap a Beat"
+  description="A browser drum kit — tap the pads, or use the keyboard, to play."
 >
   <header>
     <nav aria-label="Primary">
@@ -12,12 +12,31 @@ import Layout from "../layouts/Layout.astro";
     </nav>
   </header>
   <main>
-    <h1>COMP4020 prototype</h1>
-    <p data-testid="intro">
-      Replace this with your prototype. This week's brief is on the course
-      website; <code>spec/README.md</code> explains how the checks in this repo
-      relate to it.
+    <h1>Tap a Beat</h1>
+    <p data-testid="play-prompt" class="prompt">
+      Tap a pad — or press <kbd>A</kbd> <kbd>S</kbd> <kbd>D</kbd> <kbd>F</kbd>
+      <kbd>G</kbd> <kbd>H</kbd> — to play.
     </p>
+    <div class="pads" role="group" aria-label="Drum pads">
+      <button type="button" class="pad" data-drum="kick" data-key="a">
+        <span class="label">Kick</span><span class="key">A</span>
+      </button>
+      <button type="button" class="pad" data-drum="snare" data-key="s">
+        <span class="label">Snare</span><span class="key">S</span>
+      </button>
+      <button type="button" class="pad" data-drum="hihat" data-key="d">
+        <span class="label">Hi-hat</span><span class="key">D</span>
+      </button>
+      <button type="button" class="pad" data-drum="tom" data-key="f">
+        <span class="label">Tom</span><span class="key">F</span>
+      </button>
+      <button type="button" class="pad" data-drum="clap" data-key="g">
+        <span class="label">Clap</span><span class="key">G</span>
+      </button>
+      <button type="button" class="pad" data-drum="crash" data-key="h">
+        <span class="label">Crash</span><span class="key">H</span>
+      </button>
+    </div>
   </main>
   <script src="../scripts/main.ts"></script>
 </Layout>

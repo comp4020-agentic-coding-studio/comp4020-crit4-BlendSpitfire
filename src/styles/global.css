@@ -4,6 +4,8 @@ body {
   font-family: system-ui, sans-serif;
   line-height: 1.6;
   color: #1a1a1a;
+  background: #12131a;
+  color-scheme: dark;
 }
 
 main {
@@ -12,5 +14,77 @@ main {
 }
 
 a {
-  color: #0b5fff;
+  color: #7fb2ff;
+}
+
+h1 {
+  color: #f4f4f7;
+}
+
+.prompt {
+  color: #c7c9d9;
+}
+
+kbd {
+  display: inline-block;
+  min-width: 1.4em;
+  padding: 0.1em 0.4em;
+  border: 1px solid #4a4c5c;
+  border-radius: 0.3em;
+  background: #23253099;
+  font-family: inherit;
+  font-size: 0.9em;
+}
+
+.pads {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.pad {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  aspect-ratio: 1;
+  border: none;
+  border-radius: 1rem;
+  background: linear-gradient(160deg, #3a3d55, #23253a);
+  color: #f4f4f7;
+  font: inherit;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition:
+    transform 80ms ease-out,
+    background 80ms ease-out;
+  touch-action: manipulation;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.pad .key {
+  font-size: 0.75rem;
+  color: #9fa2ba;
+}
+
+.pad:hover {
+  background: linear-gradient(160deg, #454869, #2a2c44);
+}
+
+.pad.active {
+  transform: scale(0.94);
+  background: linear-gradient(160deg, #7fb2ff, #4a6fd9);
+}
+
+.pad.active .key {
+  color: #eef3ff;
+}
+
+@media (max-width: 30rem) {
+  .pads {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
