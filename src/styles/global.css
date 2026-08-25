@@ -4,7 +4,7 @@ body {
   font-family: system-ui, sans-serif;
   line-height: 1.6;
   color: #1a1a1a;
-  background: #12131a;
+  background: #19191a;
   color-scheme: dark;
 }
 
@@ -40,9 +40,9 @@ kbd {
    every drum shares another, positioned the way they'd sit around a
    seated drummer, no photos or shading. */
 :root {
-  --kit-bg: #101014;
+  --kit-bg: #141414;
   --kit-cymbal: #f4b400;
-  --kit-drum: #3ea6ff;
+  --kit-drum: #f2e6cf;
 }
 
 .kit {
@@ -117,6 +117,14 @@ button.piece {
   background: var(--kit-cymbal);
 }
 
+/* Open hi-hat: a filled disc with a thin ring floating just outside it,
+   like the visible gap between two hi-hat cymbals left slightly apart. */
+.hihat-ring {
+  box-shadow:
+    0 0 0 0.2rem var(--kit-bg),
+    0 0 0 0.3rem var(--kit-cymbal);
+}
+
 .disc-drum-large {
   width: 5.6rem;
   height: 5.6rem;
@@ -127,13 +135,13 @@ button.piece {
   height: 4rem;
 }
 
-/* Closed hi-hat: a disc with a wedge missing, like the open rim gap
-   between two pressed-together cymbals seen from above. */
-.notch {
+/* Closed hi-hat: a plain disc, like two cymbals pressed flat together
+   and seen from directly above. */
+.disc-hihat-closed {
   width: 4.4rem;
   height: 4.4rem;
   border-radius: 50%;
-  background: conic-gradient(transparent 0deg 42deg, var(--kit-cymbal) 42deg 360deg);
+  background: var(--kit-cymbal);
 }
 
 .bar {
@@ -278,7 +286,7 @@ button.piece {
     height: 4rem;
   }
 
-  .notch {
+  .disc-hihat-closed {
     width: 3.6rem;
     height: 3.6rem;
   }
