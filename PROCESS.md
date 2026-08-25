@@ -17,18 +17,16 @@ cover every deliverable.
 
 ## What I built
 
-One paragraph: the thing, and the idea behind it.
+一个用键盘触发的虚拟架子鼓
 
 ## The moments that mattered
 
 Three or four for an assignment; fewer is fine for a weekly prototype. Keep the
 list short so each moment has room to do all four jobs:
 
-1. **what happened** --- the problem, or the thing that went wrong
-2. **what you did instead of the obvious thing** --- the call you made, and why
-   it beat the obvious one
-3. **how you knew it was right** --- the check you ran, the viewport you looked
-   at, what you read before accepting the diff
+1. **what happened** --- 页面里面的按钮的位置始终不满意
+2. **what you did instead of the obvious thing** --- 放弃用语言调整了，让ai给了一个可以实时拖动布局的小网站，我手动排序好后让ai读取元素的位置
+3. **how you knew it was right** --- 它很有用，明显减少了沟通和时间成本
 4. **the citation** --- a commit or commit range, a `CLAUDE.md` change, a check
    that went from red to green, a prompt paired with the commit it produced
 

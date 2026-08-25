@@ -103,33 +103,16 @@ button.piece {
   background: var(--kit-bg);
 }
 
-/* Toms: a rounded petal, distinct from the plain circles used for the
-   drums that don't get their own stand. */
-.petal {
+.disc-drum {
   width: 4.6rem;
   height: 4.6rem;
-  background: var(--kit-drum);
-  border-radius: 0% 55% 55% 55%;
-}
-
-.petal-left {
-  transform: rotate(20deg);
-}
-
-.petal-right {
-  transform: rotate(-110deg);
-}
-
-.disc-drum {
-  width: 6rem;
-  height: 6rem;
   border-radius: 50%;
   background: var(--kit-drum);
 }
 
 .disc-cymbal {
-  width: 3.6rem;
-  height: 3.6rem;
+  width: 4rem;
+  height: 4rem;
   border-radius: 50%;
   background: var(--kit-cymbal);
 }
@@ -137,6 +120,11 @@ button.piece {
 .disc-drum-large {
   width: 5.6rem;
   height: 5.6rem;
+}
+
+.disc-drum-small {
+  width: 4rem;
+  height: 4rem;
 }
 
 /* Closed hi-hat: a disc with a wedge missing, like the open rim gap
@@ -171,64 +159,113 @@ button.piece {
    hi-hat's two positions stacked on the left, low tom on the right,
    snare and kick along the front. */
 .piece.crash {
-  left: 14%;
-  top: 20%;
+  left: 24.9%;
+  top: 22.5%;
 }
 
 .piece.ride {
-  left: 86%;
-  top: 20%;
+  left: 67%;
+  top: 23%;
 }
 
 .piece.hi-tom {
-  left: 37%;
-  top: 32%;
+  left: 37.7%;
+  top: 38.9%;
 }
 
 .piece.mid-tom {
-  left: 63%;
-  top: 32%;
+  left: 51.4%;
+  top: 39.2%;
 }
 
 .piece.open-hihat {
-  left: 10%;
-  top: 46%;
+  left: 22.7%;
+  top: 47.3%;
 }
 
 .piece.closed-hihat {
-  left: 10%;
-  top: 66%;
+  left: 19.9%;
+  top: 67.2%;
 }
 
 .piece.low-tom {
-  left: 90%;
-  top: 58%;
+  left: 62.1%;
+  top: 57%;
 }
 
 .piece.snare {
-  left: 32%;
-  top: 82%;
+  left: 40.4%;
+  top: 67.1%;
 }
 
 .piece.kick {
-  left: 68%;
-  top: 82%;
+  left: 54.7%;
+  top: 77.2%;
 }
 
-@media (max-width: 30rem) {
-  .kit {
-    aspect-ratio: 1 / 1.3;
+/* A narrow phone screen is too tight for a kit this wide, so instead of a
+   cramped portrait layout we force the page onto its side: a real landscape
+   phone and a rotated portrait phone end up with the same short, wide
+   canvas, so they share one compact layout below. */
+@media (max-width: 30rem) and (orientation: portrait) {
+  body {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vh;
+    height: 100vw;
+    overflow-y: auto;
+    transform-origin: top left;
+    transform: rotate(90deg) translateY(-100%);
+  }
+}
+
+@media (max-height: 30rem) and (orientation: landscape),
+  (max-width: 30rem) and (orientation: portrait) {
+  body {
+    padding: 0.75rem;
   }
 
-  .ring,
-  .disc-drum {
+  /* Rotating a portrait phone maps this element's own centering margins to
+     blank space at the top/bottom of the screen instead of the sides, so
+     drop the cap and let it use the full width here. */
+  main {
+    max-width: none;
+  }
+
+  h1 {
+    font-size: 1.1rem;
+    margin: 0 0 0.3rem;
+  }
+
+  .prompt {
+    font-size: 0.65rem;
+    margin: 0 0 0.5rem;
+  }
+
+  .prompt .key-hint {
+    display: none;
+  }
+
+  .kit {
+    aspect-ratio: 2.2 / 1;
+    width: min(90%, 34rem);
+    margin: 0 auto;
+  }
+
+  .ring {
     width: 4.2rem;
     height: 4.2rem;
   }
 
-  .petal {
+  .disc-drum {
     width: 3.2rem;
     height: 3.2rem;
+  }
+
+  .disc-drum-small {
+    width: 4.2rem;
+    height: 4.2rem;
   }
 
   .disc-cymbal {
@@ -255,50 +292,50 @@ button.piece {
     font-size: 0.6rem;
   }
 
-  /* Pull every piece in from the frame's edges so a wide ring or petal
-     never clips, and give the stacked hi-hat states more room apart. */
+  /* Wide and short: spread pieces out horizontally, keep the stacked
+     hi-hat states apart vertically since that's the scarce dimension. */
   .piece.crash {
-    left: 14%;
+    left: 10%;
     top: 12%;
   }
 
   .piece.ride {
-    left: 86%;
+    left: 90%;
     top: 12%;
   }
 
   .piece.hi-tom {
-    left: 36%;
-    top: 33%;
+    left: 33%;
+    top: 18%;
   }
 
   .piece.mid-tom {
-    left: 64%;
-    top: 33%;
+    left: 67%;
+    top: 18%;
   }
 
   .piece.open-hihat {
-    left: 16%;
-    top: 46%;
+    left: 12%;
+    top: 45%;
   }
 
   .piece.closed-hihat {
-    left: 16%;
-    top: 66%;
+    left: 12%;
+    top: 80%;
   }
 
   .piece.low-tom {
-    left: 86%;
-    top: 58%;
+    left: 85%;
+    top: 55%;
   }
 
   .piece.snare {
-    left: 32%;
-    top: 84%;
+    left: 45%;
+    top: 78%;
   }
 
   .piece.kick {
-    left: 68%;
-    top: 84%;
+    left: 58%;
+    top: 82%;
   }
 }

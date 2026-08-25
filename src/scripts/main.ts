@@ -128,8 +128,8 @@ function playCrash(ctx: AudioContext, out: AudioNode) {
   noise.stop(now + duration);
 }
 
-// A ride reads as a longer, softer wash than a crash, with a clear bell
-// pitch ringing underneath it rather than pure noise.
+// A ride reads as a longer, softer wash than a crash — just the noise
+// component, stretched out and quieter.
 function playRide(ctx: AudioContext, out: AudioNode) {
   const now = ctx.currentTime;
   const duration = 1.6;
@@ -144,16 +144,6 @@ function playRide(ctx: AudioContext, out: AudioNode) {
   noise.connect(bandpass).connect(noiseGain).connect(out);
   noise.start(now);
   noise.stop(now + duration);
-
-  const bell = ctx.createOscillator();
-  bell.type = "sine";
-  bell.frequency.value = 800;
-  const bellGain = ctx.createGain();
-  bellGain.gain.setValueAtTime(0.25, now);
-  bellGain.gain.exponentialRampToValueAtTime(0.001, now + 0.8);
-  bell.connect(bellGain).connect(out);
-  bell.start(now);
-  bell.stop(now + 0.8);
 }
 
 const VOICES: Record<string, Voice> = {
